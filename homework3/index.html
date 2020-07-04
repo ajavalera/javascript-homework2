@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <div id="1" style="width: 100px; height: 150px; background-color: blue;">
+        </div>
+    </body>
+</html>
+<script type="text/javascript">
+    // single reference in memory to the rectangle.
+    let divElement = document.getElementById("1");
+
+    // Defining the behavior on every onclick event.
+    divElement.onclick = function () {
+        let width = this.style.width;
+        width = width.replace("px", "");
+
+        // Calculating the new width, 10px less than the current rectangle width.
+        let newWidth = width - 10;
+
+        this.style.width = newWidth + "px";
+    }
+
+    // This function is the loop function, that will be called several times
+    // as long as width of the rectangle does not exceed 900px.
+    let myLoop = function (width, divElement) {
+        // This inner function will determine the winning condition
+        // reading the status of the rectangle width. The width changes with
+        // time and by the clicking event, so this function needs to be called every time
+        // the myLoop function is called in order to test the current width of the rectangle.
+        let winCondition = function (divElement) {
+            let widthText = divElement.style.width;
+            let width = widthText.replace("px", "");
+
+            if (width < 80) {
+                divElement.innerHTML = "YOU WIN";
+                divElement.style.backgroundColor = "yellow";
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        // This is a convenience function, this one contains the logic that will increase
+        // the width of the rectangle by 100px every second.  Please note this is a
+        // "self calling" function, meaning that this function calls itself in order to
+        // execute in a loop.
+        let myFunction = function () {
+            // Increasing the width by 100;
+            width += 100
+
+            // verifying if the win condition is met, by checking the status of the
+            // rectangle width.
+            if (winCondition(divElement)) {
+                return false;
+            }
+
+            divElement.style.width = width + "px";
+            
+            if (width < 900) {
+                // You have not won yet, calling myLoop again, increasing the rectangle's width.
+                myLoop(width, divElement);
+            } else {
+                // The loosing condition is met (width of the rectangle is 900px or more),
+                // therefore letting you know there is no more hope... and you need another credit.
+                divElement.innerHTML = "You loose...";
+                divElement.style.backgroundColor="red";
+            }
+        }
+
+        // calls the myFunction function with one second delay.
+        setTimeout(myFunction, 1000);
+    }
+
+    // Starts the execution of the myLoop function, starting the game.  If this function is called, once here,
+    // myLoop function will never be executed and the game would not start.
+    myLoop(100, divElement); // The rectangle starts at 100px.
+</script>
