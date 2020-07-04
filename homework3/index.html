@@ -6,18 +6,21 @@
     </body>
 </html>
 <script type="text/javascript">
-    // Create the DOM element.
-    const div1 = document.createElement("div");
+    const creatorFunction = function (amount) {
+        // Create the DOM element.
+        const div1 = document.createElement("div");
+        const width = Math.floor(Math.random() * 500) + 1;
+        console.log(width);
 
-    // Create the attribute the element will have. This makes sure the DOM will know
-    // this attribute is to be set now.
-    const styleAtt = document.createAttribute("style");
-    styleAtt.value = "width: 100px; height: 100px; background-color: red; border-radius: 500px";
-    div1.setAttributeNode(styleAtt);
+        // Create the attribute the element will have. This makes sure the DOM will know
+        // this attribute is to be set now.
+        const styleAtt = document.createAttribute("style");
+        styleAtt.value = "width: " + width + "px; height: " + width + "px; background-color: red; border-radius: 1000px";
+        div1.setAttributeNode(styleAtt);
 
-    // Insert the created element with new attribute value in the DOM.
-    document.body.appendChild(div1);
+        // Insert the created element with new attribute value in the DOM.
+        document.body.appendChild(div1);
+    }
 
-    // Relax...
-    console.log(div1);
+    creatorFunction(10);
 </script>
