@@ -3,16 +3,27 @@
     <head>
     </head>
     <body>
+        <button id="buttonLeft">Create left</button>
+        <button id="buttonCenter">Create center</button>
+        <button id="buttonRight">Create Right</button>
     </body>
 </html>
 <script type="text/javascript">
+    const createOnButtonClickLeft = () => {
+        creatorFunction(1, "0px", "100px");
+    }
+
+    const buttonLeft = document.getElementById("buttonLeft");
+    buttonLeft.onclick = createOnButtonClickLeft;
+
     const creatorFunction = (amount, xPosition, yPosition) => {
         for(let i=0; i<amount; i++) {
             // Create the DOM element.
             const div1 = document.createElement("div");
             const width = Math.floor(Math.random() * 500) + 1;
 
-            // Create the attribute the element will have. This makes sure the DOM will know
+            // Create the attribute the element will have.
+            // This makes sure the DOM will know
             // this attribute is to be set now.
             div1.style.width = width + "px";
             div1.style.height = width + "px";
@@ -26,8 +37,4 @@
             document.body.appendChild(div1);
         }
     }
-
-    creatorFunction(1, "100px", "100px");
-    creatorFunction(1, "400px", "400px");
-
 </script>
