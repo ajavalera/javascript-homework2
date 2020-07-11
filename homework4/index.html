@@ -6,7 +6,7 @@
     </body>
 </html>
 <script type="text/javascript">
-    const creatorFunction = (amount) => {
+    const creatorFunction = (amount, xPosition, yPosition) => {
         for(let i=0; i<amount; i++) {
             // Create the DOM element.
             const div1 = document.createElement("div");
@@ -18,11 +18,16 @@
             div1.style.height = width + "px";
             div1.style.backgroundColor = "blue";
             div1.style.borderRadius = "1000px";
+            div1.style.position = "absolute";
+            div1.style.left = xPosition;
+            div1.style.top= yPosition;
 
             // Insert the created element with new attribute value in the DOM.
             document.body.appendChild(div1);
         }
     }
 
-    creatorFunction(5);
+    creatorFunction(1, "100px", "100px");
+    creatorFunction(1, "400px", "400px");
+
 </script>
