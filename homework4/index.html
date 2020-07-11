@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+    </body>
+</html>
+<script type="text/javascript">
+    const creatorFunction = (amount) => {
+        for(let i=0; i<amount; i++) {
+            // Create the DOM element.
+            const div1 = document.createElement("div");
+            const width = Math.floor(Math.random() * 500) + 1;
+
+            // Create the attribute the element will have. This makes sure the DOM will know
+            // this attribute is to be set now.
+            div1.style.width = width + "px";
+            div1.style.height = width + "px";
+            div1.style.backgroundColor = "blue";
+            div1.style.borderRadius = "1000px";
+
+            // Insert the created element with new attribute value in the DOM.
+            document.body.appendChild(div1);
+        }
+    }
+
+    creatorFunction(5);
+</script>
