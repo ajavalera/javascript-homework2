@@ -3,18 +3,16 @@
     <head>
     </head>
     <body>
-        <button id="buttonLeft">Create left</button>
-        <button id="buttonCenter">Create center</button>
-        <button id="buttonRight">Create Right</button>
+        <button id="buttonLeft" onClick="createOnButtonClick(this)">Create left</button>
+        <button id="buttonCenter" onClick="createOnButtonClick(this)">Create center</button>
+        <button id="buttonRight" onClick="createOnButtonClick(this)">Create Right</button>
     </body>
 </html>
 <script type="text/javascript">
-    const createOnButtonClickLeft = () => {
+    const createOnButtonClick = (element) => {
+        console.log(element.id);
         creatorFunction(1, "0px", "100px");
     }
-
-    const buttonLeft = document.getElementById("buttonLeft");
-    buttonLeft.onclick = createOnButtonClickLeft;
 
     const creatorFunction = (amount, xPosition, yPosition) => {
         for(let i=0; i<amount; i++) {
